@@ -1,0 +1,51 @@
+<div style="text-align: center;position: fixed;top: 9%;right: 80px;">
+  <%= current_user.present? ? (link_to 'logout', destroy_user_session_path, method: :delete ) : "" %>
+</div>
+
+<%= form_for (@contact) do |f| %>
+<table>
+<tr>
+  <td>
+   <%= f.label :name %>
+  </td>
+  <td>
+   <%= f.text_field :name %>
+  </td>
+</tr>
+<tr>
+  <td>
+   <%= f.label :email %>
+  </td>
+  <td>
+    <%= f.text_field :email %>
+  </td>
+</tr>
+<tr>
+  <td>
+   <%= f.label :phoneno %>
+  </td>
+  <td>
+   <%= f.telephone_field :phoneno%>
+  </td>
+</tr>
+<tr>
+  <td>
+   <%= f.label :city %>
+  </td>
+  <td>
+   <%= f.text_field :city%>
+  </td>
+</tr>
+<tr>
+  <td>
+    <%= f.label :Address %>
+  </td>
+  <td>
+   <%= f.text_area :Address %>
+  </td>
+</tr>
+</table>
+<div class="actions" style="text-align: center;position: fixed;top: 33%;left: 7%;">  <%= f.submit %>
+</div>
+
+<% end %>

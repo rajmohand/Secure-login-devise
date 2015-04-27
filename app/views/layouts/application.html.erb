@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Securelogin</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <div class="alert-box notice" style="text-align: center;position: fixed;bottom: 9%;left: 28%;">
+<%= flash[:notice]%>
+</div>
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<div style="text-align: center;position: fixed;top: 9%;right: 80px;">
+  <%= current_user.present? ? (link_to 'logout', destroy_user_session_path, method: :delete ) : "" %>
+</div>
+
+<table align="center">
+<tr>
+<td>
+<table class="tabelcs">
+  <h1> Contacts  </h1>
+  <tr>
+    <th>Contact Name</th>
+    <th>phone</th>
+    <th>email</th>
+    <th>city</th>
+    <th>address</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @contact &&  @contact.each do |f| %>
+          <tr>
+            <td><%=f.name%></td>
+            <td><%=f.phoneno%></td>
+	    <td><%=f.email%></td>
+	    <td><%=f.city%></td>
+            <td><%=f.Address%></td>
+	      <td><%= link_to 'Edit', edit_contact_path(f) %></td>
+              <td><%= link_to 'Destroy', contact_path(f),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+  <% end %>
+       </table>
+</td>
+</tr>
+</table>
+<div style="text-align: center;position: fixed;top: 9%;left: 5%;">
+<%= link_to 'New Contact', new_contact_path %>
+</div>
+<div style="text-align: center;position: fixed;top: 12%;left: 5%;">
+<%= link_to 'Home', messages_path %>
+</div>

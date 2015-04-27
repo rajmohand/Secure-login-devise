@@ -1,0 +1,46 @@
+<div style="text-align: center;position: fixed;top: 9%;right: 80px;">
+  <%= current_user.present? ? (link_to 'logout', destroy_user_session_path, method: :delete ) : "" %>
+</div>
+
+<h1>New Message</h1>
+
+<div>
+<%= form_for (@message) do |f| %>
+<table>
+  <tr>
+    <td>
+    <%= f.label :senderemail %>
+    </td>
+    <td>
+      <%= f.text_field :senderemail ,:readonly => true%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <%= f.label :reciveremail %>
+    </td>
+    <td>
+    <%= f.text_field  :reciveremail %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :message %>
+    </td>
+    <td>
+      <%= f.text_area :message %>
+    </td>
+  </tr>
+ </table>
+<div class="action"class="actions" style="text-align: center;position: fixed;top: 30%;left: 9%;">
+  <%= f.submit "Send Message"%>
+</div>
+
+<% end %>
+
+<div style="text-align: center;position: fixed;top: 33%;left: 11%;">
+   or
+  <br>
+<%= link_to 'Home', messages_path %>
+</div>
+</div>

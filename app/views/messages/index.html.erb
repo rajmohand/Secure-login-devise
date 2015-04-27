@@ -1,0 +1,55 @@
+
+<div style="text-align: center;position: fixed;top: 9%;right: 80px;">
+  <%= current_user.present? ? (link_to 'logout', destroy_user_session_path, method: :delete ) : "" %>
+</div>
+<table align="center">
+  <tr>
+  <td>
+ <table class="tabelcs">
+   <h1> Messages </h1>
+  <tr>
+    <th>Sender E-mail</th>
+    <th>Message</th>
+  </tr>
+<% @message &&  @message.each do |f| %>
+          <tr>
+            <td><%=f.senderemail%></td>
+            <td><%=f.message%></td>
+          </tr>
+  <% end %>
+       </table>
+  </td>
+  <td>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  </td>
+  <td>
+    <table class="tabelcs">
+      <h1> Contacts </h1>
+    <tr>
+    <th>Name</th>
+    <th>Phone</th>
+     <th>E-mail</th>
+     <th>City</th>
+    <th>Addess</th>
+  </tr>
+<% @contact &&  @contact.each do |g| %>
+          <tr>
+           <td><%=g.name%></td>
+            <td><%=g.phoneno%></td>
+	    <td><%=g.email%></td>
+	    <td><%=g.city%></td>
+            <td><%=g.Address%></td>
+          </tr>
+  <% end %>
+     </table>
+  </td>
+  </tr>
+  </table>
+
+<div style="text-align: center;position: fixed;top: 9%;left: 5%;">
+<%= link_to 'New Message', new_message_path %>
+<div>
+
+<div style="text-align: center;position: fixed;top: 12%;left: 5%;">
+<%= link_to 'View contacts', contacts_path %>
+<div>
