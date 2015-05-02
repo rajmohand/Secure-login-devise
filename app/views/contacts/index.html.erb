@@ -1,7 +1,6 @@
 <div style="text-align: center;position: fixed;top: 9%;right: 80px;">
   <%= current_user.present? ? (link_to 'logout', destroy_user_session_path, method: :delete ) : "" %>
 </div>
-
 <table align="center">
 <tr>
 <td>
@@ -29,6 +28,7 @@
               data: { confirm: 'Are you sure?' } %></td>
           </tr>
   <% end %>
+   <tr><td colspan="7" align="center"><%= will_paginate @contact %></td></tr>
        </table>
 </td>
 </tr>
@@ -37,5 +37,11 @@
 <%= link_to 'New Contact', new_contact_path %>
 </div>
 <div style="text-align: center;position: fixed;top: 12%;left: 5%;">
+<%= link_to 'Upload Contact', new_contactupload_path %>
+</div>
+<div style="text-align: center;position: fixed;top: 15%;left: 5%;">
 <%= link_to 'Home', messages_path %>
+</div>
+<div style="text-align: center;position: fixed;top: 18%;left: 5%;">
+<%= link_to "Download CSV", contactuploads_path(format: "csv") %>
 </div>

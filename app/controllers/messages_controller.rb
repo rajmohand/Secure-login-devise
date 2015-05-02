@@ -1,9 +1,10 @@
+require 'will_paginate'
 class MessagesController < ApplicationController
 def index
     @user  = User.find(current_user.id)
     if @user.present?
-    @message = Message.where(:reciver_id => @user.id)
-    @contact = @user.contact
+    @message = Message.where(:reciver_id => @user.id).paginate(:page => params[:page_message], :per_page => 1)
+    @contact = @user.contact.paginate(:page => params[:page_contact], :per_page => 2)
     else
       redirect_to '/login'
     end

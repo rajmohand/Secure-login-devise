@@ -7,10 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
- <div class="alert-box notice" style="text-align: center;position: fixed;bottom: 9%;left: 28%;">
+
+  <% if user_signed_in? %>
+<div style="text-align: center;position: fixed;top:3%;right: 6%;">
+    <%=current_user.email%>
+  </div>
+<% end %>
+
+<div class="alert-box notice" style="text-align: center;position: fixed;top:3%;left: 28%;">
 <%= flash[:notice]%>
 </div>
 <%= yield %>
-
 </body>
 </html>

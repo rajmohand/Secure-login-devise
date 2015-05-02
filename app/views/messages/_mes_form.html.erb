@@ -1,0 +1,14 @@
+ <table class="tabelcs">
+   <h1> Messages </h1>
+  <tr>
+    <th>Sender E-mail</th>
+    <th>Message</th>
+  </tr>
+<% @message &&  @message.each do |f| %>
+          <tr>
+            <td><%=f.senderemail%></td>
+            <td><%=f.message%></td>
+          </tr>
+  <% end %>
+       </table>
+<%= will_paginate @message ,:param_name => 'page_message' %>

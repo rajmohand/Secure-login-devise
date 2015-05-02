@@ -27,6 +27,7 @@ class Contact < ActiveRecord::Base
 
 
   def self.bulk_insert(id)
+    
     CSV.generate do |csv|
       csv << ['email','name','address','phoneno','city'] ## Header values of CSV
       all.each do |con|

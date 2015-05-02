@@ -1,0 +1,19 @@
+ alpha = ("a".."z").to_a
+    number = (0..9).to_a
+    contactarray = Array.new
+    header = ['email','name','address','phoneno','city']
+    contactarray << header
+    1.upto(10000).each do |x|
+      contact = Array.new
+      contact << "#{alpha.sample(4).join}_#{x}@gmail.com"
+      contact << alpha.sample(5).join
+      contact << alpha.sample(5).join + alpha.sample(15).join
+      contact << number.sample(10).join
+      contact << alpha.sample(5).join
+      contactarray << contact
+    end
+    CSV.generate do |csv|
+      contactarray.each do |x|
+        csv << x
+      end
+    end

@@ -1,13 +1,14 @@
+require 'will_paginate'
 class ContactsController < ApplicationController
 
- def new
+  def new
     @contact = Contact.new
   end
 
   def index
     @user  = User.find(current_user.id)
     if @user.present?
-      @contact = @user.contact
+      @contact = @user.contact.paginate(:page => params[:page], :per_page => 2)
     else
       redirect_to '/login'
     end
@@ -46,5 +47,4 @@ class ContactsController < ApplicationController
   def contact_params
     params.require(:contact).permit(:name,:email,:phoneno,:Address)
   end
-
 end
